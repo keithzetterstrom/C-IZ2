@@ -49,6 +49,6 @@ script:
     - cmake --build .
     - if [ $TRAVIS_OS_NAME = linux ]; then cppcheck --error-exitcode=1 --inconclusive --enable=all --language=c ../src ../include; fi
 
-    - if [ $TRAVIS_OS_NAME = linux ]; then valgrind --error-exitcode=1 --leak-check=full --show-leak-kinds=all ../main.cpp ../unit_tests.cpp; fi
+    - if [ $TRAVIS_OS_NAME = linux ]; then valgrind --error-exitcode=1 --leak-check=full --show-leak-kinds=all ./iz2_tests; fi
     - if [ $TRAVIS_OS_NAME = osx ]; then ./iz2_tests; fi
   
