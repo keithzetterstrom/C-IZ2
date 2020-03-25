@@ -80,6 +80,10 @@ int * multi_init_index_array(const char * str, int str_size, int * array_size)
 			index_array_size++;
 		}
 	}
+
+	if(index_array_size == 0)
+		return NULL;
+
 	int * new_array = (int *)(realloc(index_array, index_array_size * sizeof(int)));
 	if (new_array == NULL)
 		return NULL;
