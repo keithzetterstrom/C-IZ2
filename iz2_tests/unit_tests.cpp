@@ -96,3 +96,57 @@ TEST(testMainFunc, test2)
 	free(result_str);
 }
 
+
+TEST(testMainFunc, test3)
+{
+	int str_size = 0;
+	char * str = read_file("../../texts/test0.txt", &str_size);
+	if(str == nullptr)
+		return;
+
+	char * real_str = (char*)"";
+
+	char * result_str = find_str(str, str_size);
+
+	if(result_str == nullptr)
+	{
+		delete[] str;
+		return;
+	}
+
+	for (int i = 0; i < strlen(real_str); ++i)
+	{
+		ASSERT_EQ(real_str[i], result_str[i]);
+	}
+
+	delete[] str;
+	free(result_str);
+}
+
+
+TEST(testMainFunc, test4)
+{
+	int str_size = 0;
+	char * str = read_file("../../texts/test0.txt", &str_size);
+	if(str == nullptr)
+		return;
+
+	char * real_str = (char*)"";
+
+	char * result_str = multi_find_str(str, str_size);
+
+	if(result_str == nullptr)
+	{
+		delete[] str;
+		return;
+	}
+
+	for (int i = 0; i < strlen(real_str); ++i)
+	{
+		ASSERT_EQ(real_str[i], result_str[i]);
+	}
+
+	delete[] str;
+	free(result_str);
+}
+

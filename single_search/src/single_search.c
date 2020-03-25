@@ -129,12 +129,6 @@ char * find_str(const char * str, int str_size)
 		return NULL;
 	}
 
-	if(print_str(result_str, result_str_struct.str_size))
-	{
-		free(index_array);
-		return NULL;
-	}
-
 	free(index_array);
 	return result_str;
 }

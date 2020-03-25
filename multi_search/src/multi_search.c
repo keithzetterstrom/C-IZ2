@@ -19,7 +19,6 @@ int get_threads_count()
  	return threadsCount;
 #elif IS_LINUX
 	int threadsCount = get_nprocs();
-	printf("\nThreads count: %i\n", threadsCount);
 	return threadsCount;
 #endif
 }
@@ -155,6 +154,8 @@ char * multi_find_str(const char * str, int str_size)
 	int array_size = 0;
 
 	int * array = multi_init_index_array(str, str_size, &array_size);
+	if(array == NULL)
+		return NULL;
 
 	int array_for_thread_size = array_size / threads_count;
 
@@ -188,6 +189,9 @@ char * multi_find_str(const char * str, int str_size)
 	free(array);
 
 	char * result_str = multi_get_result_str(str, max_str_struct);
-	print_str(result_str, max_str_struct.str_size);
+	if(result_str == NULL)
+	{
+		return NULL;
+	}
 	return result_str;
 }
