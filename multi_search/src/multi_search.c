@@ -13,8 +13,15 @@ int mod_m(int num)
 
 int get_threads_count()
 {
-	int count_threads = get_nprocs();
-	return count_threads;
+#ifdef IS_MACOS
+	int threadsCount = sysconf( _SC_NPROCESSORS_CONF );
+ 	printf("\nThreads count: %i\n", threadsCount);
+ 	return threadsCount;
+#elif IS_LINUX
+	int threadsCount = get_nprocs();
+	printf("\nThreads count: %i\n", threadsCount);
+	return threadsCount;
+#endif
 }
 
 

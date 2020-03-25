@@ -5,7 +5,11 @@
 #include <string.h>
 #include <stdlib.h>
 #include <pthread.h>
+#ifdef IS_MACOS
+#include <unistd.h>
+#elif IS_LINUX
 #include <sys/sysinfo.h>
+#endif
 
 typedef struct
 {
