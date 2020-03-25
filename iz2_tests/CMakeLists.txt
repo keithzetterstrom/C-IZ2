@@ -29,4 +29,11 @@ include_directories(../single_search/include ../multi_search/include)
 link_directories(../single_search/cmake-build-debug ../multi_search/cmake-build-debug)
 
 add_executable(iz2_tests main.cpp unit_tests.cpp)
-target_link_libraries(iz2_tests gtest_main libsingle_search.so libmulti_search.a)
+
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    target_link_libraries(iz2_tests gtest_main libsingle_search.dylib libmulti_search.a)
+endif()
+
+if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    target_link_libraries(iz2_tests gtest_main libsingle_search.so libmulti_search.a)
+endif()

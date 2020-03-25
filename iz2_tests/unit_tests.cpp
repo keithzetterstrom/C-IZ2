@@ -10,9 +10,9 @@ extern "C"
 	#include "multi_search.h"
 }
 
-char * read_file(const string& path, int * str_size)
+char *read_file(const string& path, int * str_size)
 {
-	char * buffer;
+	char *buffer;
 
 	ifstream is;
 	is.open(path, ios::binary);
