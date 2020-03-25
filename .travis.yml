@@ -32,14 +32,14 @@ script:
     - cd cmake-build-debug
     - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU
     - cmake --build .
-    - if [ $TRAVIS_OS_NAME = linux ]; then cppcheck --error-exitcode=1 --inconclusive --enable=all --language=c ../src ../include; fi
+    - if [ $TRAVIS_OS_NAME = linux ]; then cppcheck --error-exitcode=1 --inconclusive --enable=all --language=c /src ../include; fi
 
     - cd ../../multi_search
     - mkdir cmake-build-debug
     - cd cmake-build-debug
     - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU
     - cmake --build .
-    - if [ $TRAVIS_OS_NAME = linux ]; then cppcheck --error-exitcode=1 --inconclusive --enable=all --language=c ../src ../include; fi
+    - if [ $TRAVIS_OS_NAME = linux ]; then cppcheck --error-exitcode=1 --inconclusive --enable=all --language=c /src ../include; fi
 
 
     - cd ../../iz2_tests
@@ -47,7 +47,7 @@ script:
     - cd cmake-build-debug
     - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU
     - cmake --build .
-    - if [ $TRAVIS_OS_NAME = linux ]; then cppcheck --error-exitcode=1 --inconclusive --enable=all --language=c ../src ../include; fi
+    - if [ $TRAVIS_OS_NAME = linux ]; then cppcheck --error-exitcode=1 --inconclusive --enable=all --language=c /src ../include; fi
 
     - if [ $TRAVIS_OS_NAME = linux ]; then valgrind --error-exitcode=1 --leak-check=full --show-leak-kinds=all ./iz2_tests; fi
     - if [ $TRAVIS_OS_NAME = osx ]; then ./iz2_tests; fi
